@@ -1,4 +1,5 @@
-import Graph, { VertexDescriptor } from "./Graph";
+import Graph from "./Graph";
+import VertexDescriptor from "./VertexDescriptor";
 import inEdges from "./inEdges";
 ("./outEdges");
 

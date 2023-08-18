@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
-import Graph, { VertexDescriptor } from "./Graph";
+import Graph from "./Graph";
+import VertexDescriptor from "./VertexDescriptor";
 
 const createVD = (): VertexDescriptor => ({ for: "vertex", identifier: v4() });
 

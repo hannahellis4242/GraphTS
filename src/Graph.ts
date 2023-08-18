@@ -1,16 +1,10 @@
-export interface VertexDescriptor {
-  for: "vertex";
-  identifier: string;
-}
-export interface EdgeDescirptor {
-  for: "edge";
-  identifier: string;
-}
+import EdgeDescriptor from "./EdgeDescriptor";
+import VertexDescriptor from "./VertexDescriptor";
 
 export default class Graph<GraphType, VertexType, EdgeType> {
   vertices: Map<VertexDescriptor, VertexType>;
   edges: Map<
-    EdgeDescirptor,
+    EdgeDescriptor,
     { source: VertexDescriptor; target: VertexDescriptor; data: EdgeType }
   >;
   constructor(
@@ -27,7 +21,7 @@ export default class Graph<GraphType, VertexType, EdgeType> {
   getVertexData(v: VertexDescriptor) {
     return this.vertices.get(v);
   }
-  getEdgeData(e: EdgeDescirptor) {
+  getEdgeData(e: EdgeDescriptor) {
     const found = this.edges.get(e);
     return found ? found.data : undefined;
   }
