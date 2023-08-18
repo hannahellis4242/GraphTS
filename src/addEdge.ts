@@ -1,9 +1,12 @@
-import { v4 } from "uuid";
 import Graph from "./Graph";
 import EdgeDescriptor from "./EdgeDescriptor";
 import VertexDescriptor from "./VertexDescriptor";
+import createId from "./createId";
 
-const createED = (): EdgeDescriptor => ({ for: "edge", identifier: v4() });
+const createED = (): EdgeDescriptor => ({
+  for: "edge",
+  identifier: createId(),
+});
 
 const addEdge = <G, V, E>(
   source: VertexDescriptor,
