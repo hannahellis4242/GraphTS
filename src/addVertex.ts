@@ -1,8 +1,11 @@
-import { v4 } from "uuid";
 import Graph from "./Graph";
 import VertexDescriptor from "./VertexDescriptor";
+import createId from "./createId";
 
-const createVD = (): VertexDescriptor => ({ for: "vertex", identifier: v4() });
+const createVD = (): VertexDescriptor => ({
+  for: "vertex",
+  identifier: createId(),
+});
 
 const addVertex = <G, V, E>(
   vertex: V,
