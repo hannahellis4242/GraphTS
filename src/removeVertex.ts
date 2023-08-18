@@ -1,4 +1,6 @@
 import Graph, { VertexDescriptor } from "./Graph";
+import addVertex from "./addVertex";
+import addEdge from "./addEdge";
 
 const removeVertex = <G, V, E>(
   v: VertexDescriptor,
@@ -9,12 +11,12 @@ const removeVertex = <G, V, E>(
     .filter(([desciptor, _]) => {
       desciptor !== v;
     })
-    .forEach(([desciptor, data]) => ng.addVertex(data, desciptor));
+    .forEach(([desciptor, data]) => addVertex(data,ng, desciptor));
   Array.from(g.edges.entries())
     .filter(([_, { source }]) => source !== v)
     .filter(([_, { target }]) => target !== v)
     .forEach(([descriptor, { source, target, data }]) =>
-      ng.addEdge(source, target, data, descriptor)
+      addEdge(source, target, data,ng, descriptor)
     );
   return ng;
 };
