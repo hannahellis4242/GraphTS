@@ -1,9 +1,11 @@
-import Graph, { EdgeDescirptor, VertexDescriptor } from "./Graph";
+import EdgeDescriptor from "./EdgeDescriptor";
+import Graph from "./Graph";
+import VertexDescriptor from "./VertexDescriptor";
 
 const outEdges = <G, V, T>(
   v: VertexDescriptor,
   g: Graph<G, V, T>
-): EdgeDescirptor[] =>
+): EdgeDescriptor[] =>
   Array.from(g.edges.entries())
     .filter(([_, { source }]) => source === v)
     .map(([descriptor, _]) => descriptor);

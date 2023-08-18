@@ -1,7 +1,9 @@
-import Graph, { EdgeDescirptor, VertexDescriptor } from "./Graph";
+import EdgeDescriptor from "./EdgeDescriptor";
+import Graph from "./Graph";
+import VertexDescriptor from "./VertexDescriptor";
 
 const target = <G, V, T>(
-  e: EdgeDescirptor,
+  e: EdgeDescriptor,
   g: Graph<G, V, T>
 ): VertexDescriptor | undefined => {
   const found = g.edges.get(e);
