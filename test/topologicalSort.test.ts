@@ -92,4 +92,33 @@ describe("topologicalSort", () => {
     addEdge(vertexC, vertexA, null, graph);
     expect(() => topologicalSort(graph)).toThrow("Graph contains a cycle");
   });
+  test("complex case 1", () => {
+    const graph = new Graph<null, string, null>(null, true);
+    const vertexA = addVertex("A", graph);
+    const vertexB = addVertex("B", graph);
+    const vertexC = addVertex("C", graph);
+    const vertexD = addVertex("D", graph);
+    const vertexE = addVertex("E", graph);
+    const vertexF = addVertex("F", graph);
+    const vertexG = addVertex("G", graph);
+
+    addEdge(vertexA, vertexB, null, graph);
+    addEdge(vertexB, vertexC, null, graph);
+    addEdge(vertexA, vertexD, null, graph);
+    addEdge(vertexD, vertexC, null, graph);
+    addEdge(vertexD, vertexE, null, graph);
+    addEdge(vertexC, vertexG, null, graph);
+    addEdge(vertexE, vertexF, null, graph);
+    addEdge(vertexF, vertexG, null, graph);
+    const result = topologicalSort(graph);
+    expect(result).toStrictEqual([
+      vertexA,
+      vertexB,
+      vertexD,
+      vertexC,
+      vertexE,
+      vertexF,
+      vertexG,
+    ]);
+  });
 });
