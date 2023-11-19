@@ -1,4 +1,4 @@
-import Graph from "../src/Graph";
+import DirectedGraph from "../src/DirectedGraph";
 import addVertex from "../src/addVertex";
 import addEdge from "../src/addEdge";
 import topologicalSort from "../src/topologicalSort";
@@ -6,19 +6,19 @@ import vertices from "../src/vertices";
 import edges from "../src/edges";
 describe("topologicalSort", () => {
   test("empty graph", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const result = topologicalSort(graph);
     expect(result).toHaveLength(0);
   });
   test("single vertex graph", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertex = addVertex("A", graph);
     const result = topologicalSort(graph);
     expect(result).toHaveLength(1);
     expect(result).toContain(vertex);
   });
   test("two vertices graph", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertex1 = addVertex("A", graph);
     const vertex2 = addVertex("B", graph);
     addEdge(vertex1, vertex2, null, graph);
@@ -28,7 +28,7 @@ describe("topologicalSort", () => {
     expect(result[1]).toBe(vertex2);
   });
   test("three vertices in sequence", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
@@ -41,7 +41,7 @@ describe("topologicalSort", () => {
     expect(result).toStrictEqual([vertexA, vertexB, vertexC]);
   });
   test("three vertices with linking child", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
@@ -54,7 +54,7 @@ describe("topologicalSort", () => {
     expect(result).toStrictEqual([vertexB, vertexC, vertexA]);
   });
   test("three vertices with linking parent", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
@@ -67,7 +67,7 @@ describe("topologicalSort", () => {
     expect(result).toStrictEqual([vertexA, vertexB, vertexC]);
   });
   test("three vertex dimond", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
@@ -83,7 +83,7 @@ describe("topologicalSort", () => {
     expect(result).toStrictEqual([vertexD, vertexB, vertexC, vertexA]);
   });
   test("cycle", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
@@ -93,7 +93,7 @@ describe("topologicalSort", () => {
     expect(() => topologicalSort(graph)).toThrow("Graph contains a cycle");
   });
   test("complex case 1", () => {
-    const graph = new Graph<null, string, null>(null, true);
+    const graph = new DirectedGraph<null, string, null>(null);
     const vertexA = addVertex("A", graph);
     const vertexB = addVertex("B", graph);
     const vertexC = addVertex("C", graph);
