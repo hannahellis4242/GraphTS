@@ -1,28 +1,21 @@
 import EdgeDescriptor from "./EdgeDescriptor";
 import VertexDescriptor from "./VertexDescriptor";
 
-export default class Graph<GraphType, VertexType, EdgeType> {
-  vertices: Map<VertexDescriptor, VertexType>;
-  edges: Map<
-    EdgeDescriptor,
-    { source: VertexDescriptor; target: VertexDescriptor; data: EdgeType }
-  >;
-  constructor(
-    public readonly data: GraphType,
-    public readonly directed: boolean
-  ) {
-    this.vertices = new Map();
-    this.edges = new Map();
-  }
+export interface EdgeData<EdgeType> {
+  source: VertexDescriptor;
+  target: VertexDescriptor;
+  data: EdgeType;
+}
 
-  getGraphData() {
-    return this.data;
-  }
-  getVertexData(v: VertexDescriptor) {
-    return this.vertices.get(v);
-  }
-  getEdgeData(e: EdgeDescriptor) {
-    const found = this.edges.get(e);
-    return found ? found.data : undefined;
-  }
+export type VertexMap<VertexType> = Map<VertexDescriptor, VertexType>;
+export type EdgeMap<EdgeType> = Map<EdgeDescriptor, EdgeData<EdgeType>>;
+
+export default interface Graph<GraphType, VertexType, EdgeType> {
+  readonly directed: boolean;
+  readonly data: GraphType;
+  vertices: VertexMap<VertexType>;
+  edges: EdgeMap<EdgeType>;
+  getGraphData(): GraphType;
+  getVertexData(v: VertexDescriptor): VertexType | undefined;
+  getEdgeData(e: EdgeDescriptor): EdgeType | undefined;
 }
