@@ -18,6 +18,6 @@ import vertices from "./vertices";
 import DirectedGraph from "./DirectedGraph";
 import UndirectedGraph from "./UndirectedGraph";
 import createGraph from "./createGraph";
-import toDot from "./toDot";
+import toDot, { DotWriter } from "./toDot";
 export default Graph;
-export { DirectedGraph, UndirectedGraph, createGraph, addEdge, addVertex, adjacentVertices, clone, EdgeDescriptor, edges, inDegree, inEdges, outDegree, outEdges, removeVertex, source, target, toDot, topologicalSort, VertexDescriptor, vertices, };
+export { DirectedGraph, UndirectedGraph, createGraph, addEdge, addVertex, adjacentVertices, clone, DotWriter, EdgeDescriptor, edges, inDegree, inEdges, outDegree, outEdges, removeVertex, source, target, toDot, topologicalSort, VertexDescriptor, vertices, };
