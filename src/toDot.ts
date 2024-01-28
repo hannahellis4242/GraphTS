@@ -31,6 +31,7 @@ const toDot = <G, V, E>(
     vertexToLabelMap.set(vertex, label);
     output += `${label} ${writer.writeVertex(vertex)};\n`;
   });
+
   edges(graph).forEach((edge) => {
     const s = source(edge, graph);
     const t = target(edge, graph);
