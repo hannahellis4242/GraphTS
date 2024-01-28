@@ -18,6 +18,7 @@ import vertices from "./vertices";
 import DirectedGraph from "./DirectedGraph";
 import UndirectedGraph from "./UndirectedGraph";
 import createGraph from "./createGraph";
+import toDot from "./toDot";
 
 export default Graph;
 export {
@@ -37,6 +38,7 @@ export {
   removeVertex,
   source,
   target,
+  toDot,
   topologicalSort,
   VertexDescriptor,
   vertices,
